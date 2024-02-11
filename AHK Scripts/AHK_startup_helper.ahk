@@ -19,3 +19,8 @@ return
 ; ^#c::
 ; Run, CapsLockCtrlEscape.exe			;Ctrl+Win+C
 ; return
+
+
+
+; When Ctrl-Alt-H is pressed, show the Keypress history
+^!h::KeyHistory

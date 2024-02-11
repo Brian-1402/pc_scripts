@@ -16,26 +16,31 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; Original thread where this was found: https://gist.github.com/sedm0784/4443120
 
 
-CapsDown := false
-
 *Space::
-	if (CapsDown) {
+	if (GetKeyState("CapsLock", "P")) {
 		; If Capslock is down, then send Shift+F10
 		Send, +{F10}
-	} else {
-		Send, {Space}
+	} else if (GetKeyState("LAlt", "P")) {
+		; If Alt key is down, then send Alt+Space, bringing back overrided space functionality
+        Send, {Blind}{LAlt}{Space}
+    } else if (GetKeyState("Ctrl", "P")) {
+        ; If Win key is down, then send Win+Space
+        Send, {Blind}^{Space}
+    } else if (GetKeyState("LWin", "P")) {
+        ; If Win key is down, then send Win+Space
+        Send, {Blind}#{Space}
+    } else {
+		Send, {Blind}{Space}
 	}
-return
+	return
 
 ; When Capslock is pressed down, act like LControl.
 *Capslock::
-	CapsDown := true
     Send {Blind}{LControl down}
-return
+    return
 
 ; When Capslock is released, if nothing else was pressed then act like Esc.
 *Capslock up::
-	CapsDown := false
     Send {Blind}{LControl up}
     ;Popup("CAPS UP AFTER " . A_PRIORKEY)
     if A_PRIORKEY = CapsLock

@@ -29,47 +29,47 @@ Loop {
 #If (CapsIsDown ="1") ;&& (NumIsDown = "1")
 
 w::
-Send {up}
+SendInput {up}
 Sleep, 20
 return
 
 a::
-Send {left}
+SendInput {left}
 Sleep, 20
 return
 
 s::
-Send {down}
+SendInput {down}
 Sleep, 20
 return
 
 d::
-Send {right}
+SendInput {right}
 Sleep, 20
 return
 
 
 
 f6::
-Send {Volume_Mute}
+SendInput {Volume_Mute}
 return
 f7::
-Send {Volume_Down}
+SendInput {Volume_Down}
 return
 f8::
-Send {Volume_Up}
+SendInput {Volume_Up}
 return
 f9::
-Send {Media_Prev}
+SendInput {Media_Prev}
 return
 f10::
-Send {Media_Play_Pause}
+SendInput {Media_Play_Pause}
 return
 f11::
-Send {Media_Next}
+SendInput {Media_Next}
 return
 f12::
-Send {Media_Next}
+SendInput {Media_Next}
 return
 
 
@@ -80,22 +80,22 @@ return
 
 ;hjkl arrow keys when pressing Alt
 !k::
-Send {up}
+SendInput {up}
 Sleep, 20
 return
 
 !h::
-Send {left}
+SendInput {left}
 Sleep, 20
 return
 
 !j::
-Send {down}
+SendInput {down}
 Sleep, 20
 return
 
 !l::
-Send {right}
+SendInput {right}
 Sleep, 20
 return
 

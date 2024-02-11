@@ -13,14 +13,13 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ^+#z::									;Ctrl+Shift+Win+Z
 Run, C:\Users\Brian\AppData\Roaming\Portable Chrome
 return
+^+!z::									;Ctrl+Shift+Alt+Z
 ^+/::									;Ctrl+Shift+/
 Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Olevin.lnk
 return
 ^+#x::									;Ctrl+Shift+Win+X
 Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
 return
-^+!z::									;Ctrl+Shift+Alt+Z
-#!n::									;Win+Alt+N
 ^+#s::									;Ctrl+Shift+Win+S
 Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
 return
@@ -57,9 +56,9 @@ return
 #w::									;Win + W
 Run, C:\Users\Brian\Automations\WhatsApp.lnk
 return
-;#!n::									;Win+Alt+N
-;Run, C:\Users\Brian\Automations\Incognito (Brian) - Chrome.lnk
-;return
+#!n::									;Win+Alt+N
+Run, C:\Users\Brian\Automations\Incognito (Brian) - Chrome.lnk
+return
 #!t::									;Win+Alt+T
 Run, C:\Users\brian\My Files\Study\To do.txt
 return
@@ -69,7 +68,9 @@ return
 #+t::									;Win+Shift+T
 Run, C:\Users\brian\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
 return
-
+#e::									;Win+E
+Run, C:\Users\brian\Shortcuts
+return
 
 
 
@@ -97,32 +98,32 @@ return
 
 
 !w::									;Alt+W
-Send ^{F4}									;>Ctrl+F4
+SendInput ^{F4}									;>Ctrl+F4
 return
 
 +!w::									;Shift+Alt+W
-Send +^w								;>Shift+Ctrl+W
+SendInput +^w								;>Shift+Ctrl+W
 return
 
 !r::									;Alt+R
-Send ^r									;>Ctrl+R
+SendInput ^r									;>Ctrl+R
 return
 
 !t::									;Alt+T
-Send ^t									;>Ctrl+T
+SendInput ^t									;>Ctrl+T
 return
 
 !q::									;Alt+Q
-Send ^{Tab}								;>Tab
+SendInput ^{Tab}								;>Tab
 return
 
 +!q::									;Shift+Alt+Q
-Send +^{Tab}								;>Shift+Tab
+SendInput +^{Tab}								;>Shift+Tab
 return
 
 !c::									;Alt+C
 <^>!c::									;LCtrl+RAlt+C
-Send !{F4}								;>Alt+F4
+SendInput !{F4}								;>Alt+F4
 return
 
 !v::									;Alt+V
@@ -138,7 +139,7 @@ return
 ;~NumpadDel & NumpadEnd::
 ;~Numpad0 & Numpad2::
 ~NumpadIns & NumpadDown::
-Send #^{left}								;>Win+Ctrl+Left
+SendInput #^{left}								;>Win+Ctrl+Left
 return
 
 #c::									;Win+C
@@ -149,28 +150,36 @@ return
 ;~NumpadDel & NumpadDown::
 ;~Numpad0 & Numpad3::
 ~NumpadIns & NumpadPgDn::
-Send #^{right}								;>Win+Ctrl+Right
+SendInput #^{right}								;>Win+Ctrl+Right
 return
 
 
 LWin & Space::							;Win+Space
-Send {Media_Play_Pause}
+SendInput {Media_Play_Pause}
 return
 
-CapsLock & Space::					;CapsLock+Bksp
-Send +{F10}
+;
+; ; Make Caps Lock act as Ctrl when pressed with another key
+; CapsLock::Ctrl
+;
+; ; Restore Caps Lock functionality when pressed alone
+; CapsLock Up::Send {CapsLock}
 
-CapsLock & BackSpace::					;CapsLock+Bksp
-CapsLock & p::							;CapsLock+p
-SendInput, ^{BackSpace}					;Send Ctrl+Bksp
-return
+;
+; CapsLock & Space::					;CapsLock+Bksp
+; SendInput +{F10}
+; return
+;
+; CapsLock & BackSpace::					;CapsLock+Bksp
+; ; CapsLock & p::							;CapsLock+p
+; SendInput ^{BackSpace}					;Send Ctrl+Bksp
+; return
 
-+CapsLock::								;Shift+CapsLock
-CapsLock & i::							;CapsLock+i
-Send {Esc}								;Remaps the above to send Esc key
-return 
-
+; +CapsLock::								;Shift+CapsLock
+; CapsLock & i::							;CapsLock+i
+; SendInput {Esc}								;Remaps the above to send Esc key
+; return 
 
 #!x::
 ExitApp
-Return
+

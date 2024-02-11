@@ -7,10 +7,15 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #NoTrayIcon
 
 
+; Assumes that the other exes are in the same directory
 
 ^#x::
-Run, C:\Users\brian\Automations\AHK main script.exe		;Ctrl+Win+X
+Run, AHK_main_script.exe		;Ctrl+Win+X
+Run, CapsLockCtrlEscape.exe			;Ctrl+Win+C
 return
 ^#z::
-Run, C:\Users\brian\Automations\AHK Caps Lock switch.exe		;Ctrl+Win+Z
+Run, AHK_CapsLock_arrows.exe		;Ctrl+Win+Z
 return
+; ^#c::
+; Run, CapsLockCtrlEscape.exe			;Ctrl+Win+C
+; return

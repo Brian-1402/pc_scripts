@@ -9,7 +9,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; Map Capslock to Control
 ; Map press & release of Capslock with no other key to Esc
-; Press both shift keys together to toggle Capslock
+; Press both shift keys together or hold CapsLock for longer time, to toggle Capslock
 ; Map CapsLock+Space to Shift+F10 (context menu key)
 
 ; Modification of https://github.com/fenwar/ahk-caps-ctrl-esc/blob/master/AutoHotkey.ahk
@@ -34,20 +34,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	}
 	return
 
-; When Capslock is pressed down, act like LControl.
-*Capslock::
-    Send {Blind}{LControl down}
-    return
-
-; When Capslock is released, if nothing else was pressed then act like Esc.
-*Capslock up::
-    Send {Blind}{LControl up}
-    ;Popup("CAPS UP AFTER " . A_PRIORKEY)
-    if A_PRIORKEY = CapsLock
-    {
-        Send {Esc}
-    }
-    return
 
 ; Function to trigger the original Capslock behaviour.
 ; This is needed because by default, AHK turns CapsLock off before doing Send
@@ -57,6 +43,41 @@ ToggleCaps(){
     SetStoreCapsLockMode, On
     return
 }
+
+g_LastCtrlKeyDownTime := 0
+g_ControlRepeatDetected := false
+
+; When Capslock is pressed down, act like LControl.
+*Capslock::
+	if (g_ControlRepeatDetected)
+    {
+        return
+    }
+    g_LastCtrlKeyDownTime := A_TickCount
+    g_ControlRepeatDetected := true
+    Send {Blind}{LControl down}
+    return
+
+; When Capslock is released, if nothing else was pressed then act like Esc.
+*Capslock up::
+    Send {Blind}{LControl up}
+    g_ControlRepeatDetected := false
+    current_time := A_TickCount
+    time_elapsed := current_time - g_LastCtrlKeyDownTime
+
+    if A_PRIORKEY = CapsLock
+    {
+		if (time_elapsed <= 500) {
+			Send {Esc}
+		} else {
+			ToggleCaps()
+			; MsgBox ("CAPS UP AFTER 500ms")
+		}
+    }
+	time_elapsed := 0
+	g_LastCtrlKeyDownTime := 0
+    return
+
 
 ; When both shift keys are pressed, act like Capslock
 LShift & RShift::ToggleCaps()

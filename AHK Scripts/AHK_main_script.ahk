@@ -5,82 +5,70 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #SingleInstance, force
 #NoTrayIcon
+EnvGet, vUserHome, USERPROFILE
 
 
-
-
+if (A_ComputerName == "BRIAN-HP") {
 
 ^+#z::									;Ctrl+Shift+Win+Z
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome
+Run, %vUserHome%\AppData\Roaming\Portable Chrome
 return
 ^+!z::									;Ctrl+Shift+Alt+Z
 ^+/::									;Ctrl+Shift+/
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Olevin.lnk
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Olevin.lnk
 return
 ^+#x::									;Ctrl+Shift+Win+X
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
 return
 ^+#s::									;Ctrl+Shift+Win+S
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
 return
 #j::									;Win+J
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Joplin.lnk
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Joplin.lnk
 return
 #o::									;Win+O
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Obsidian.lnk
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Obsidian.lnk
 return
 ;#n::									;Win+N
-;Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Notion.lnk
+;Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Notion.lnk
 ;return
 ^+#w::									;Ctrl+Shift+Win+W
-Run, C:\Users\Brian\AppData\Roaming\Portable Chrome\shortcuts\Working Memory.url
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Working Memory.url
 return
 
-
-
 ;#!l::									;Win+Alt+L
-;Run, C:\Users\brian\AppData\Roaming\Portable Chrome\other\logfile.txt
+;Run, %vUserHome%\AppData\Roaming\Portable Chrome\other\logfile.txt
 ;return
 ;#!f::									;Win+Alt+F
-;Run, C:\Users\brian\AppData\Roaming\Portable Chrome\other\f_logs.txt
+;Run, %vUserHome%\AppData\Roaming\Portable Chrome\other\f_logs.txt
 ;return
-;#!i::									;Win+Alt+i
-;Run, C:\Users\brian\AppData\Roaming\Portable Chrome\other\Things to move\interesting stuff to check on.docx
-;return
-
-
-
-
 
 
 #w::									;Win + W
-Run, C:\Users\Brian\Automations\WhatsApp.lnk
+Run, %vUserHome%\Automations\WhatsApp.lnk
 return
 #!n::									;Win+Alt+N
-Run, C:\Users\Brian\Automations\Incognito (Brian) - Chrome.lnk
+Run, %vUserHome%\Automations\Incognito (Brian) - Chrome.lnk
 return
 #!t::									;Win+Alt+T
-Run, C:\Users\brian\My Files\Study\To do.txt
+Run, %vUserHome%\My Files\Study\To do.txt
 return
 #t::									;Win+T
-Run, C:\Users\brian\My Files\Study\Time Table.txt
+Run, %vUserHome%\My Files\Study\Time Table.txt
 return
 #+t::									;Win+Shift+T
-Run, C:\Users\brian\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
-return
-#e::									;Win+E
-Run, C:\Users\brian\Shortcuts
+Run, %vUserHome%\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
 return
 
+if (A_OSVersion != "WIN_10") {
+	#e::									;Win+E
+		Run, %vUserHome%\Shortcuts
+	return
+}
 
-
-
+}
 
 ;	The below hotkeys will work on any PC, i.e. they're all general hotkeys
-
-
-
-
 
 
 #`::									;Win+`
@@ -92,9 +80,6 @@ return
 return
 :co:sre::site:www.reddit.com
 return
-;:co:sss/::app.simplenote.com
-;return
-
 
 
 !w::									;Alt+W
@@ -154,32 +139,10 @@ SendInput #^{right}								;>Win+Ctrl+Right
 return
 
 
-LWin & Space::							;Win+Space
-SendInput {Media_Play_Pause}
-return
-
-;
-; ; Make Caps Lock act as Ctrl when pressed with another key
-; CapsLock::Ctrl
-;
-; ; Restore Caps Lock functionality when pressed alone
-; CapsLock Up::Send {CapsLock}
-
-;
-; CapsLock & Space::					;CapsLock+Bksp
-; SendInput +{F10}
-; return
-;
-; CapsLock & BackSpace::					;CapsLock+Bksp
-; ; CapsLock & p::							;CapsLock+p
-; SendInput ^{BackSpace}					;Send Ctrl+Bksp
+; LWin & Space::							;Win+Space
+; SendInput {Media_Play_Pause}
 ; return
 
-; +CapsLock::								;Shift+CapsLock
-; CapsLock & i::							;CapsLock+i
-; SendInput {Esc}								;Remaps the above to send Esc key
-; return 
 
 #!x::
 ExitApp
-

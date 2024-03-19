@@ -29,8 +29,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
         ; If Ctrl key is down, then send Ctrl+Space
         Send, {Blind}^{Space}
     } else if (GetKeyState("LWin", "P")) {
-        ; If Win key is down, then send Win+Space
-        Send, {Blind}#{Space}
+        ; If Win key is down, then send Media_Play_Pause
+        Send, {Media_Play_Pause}
     } else {
 		Send, {Blind}{Space}
 	}

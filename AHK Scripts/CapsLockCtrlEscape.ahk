@@ -9,7 +9,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; Map Capslock to Control
 ; Map press & release of Capslock alone, to Esc
-; Press both shift keys together or hold CapsLock for longer time, to toggle Capslock
+; Press Ctrl+Esc or Caps+Esc to toggle Capslock
 ; Map CapsLock+Space to Shift+F10 (context menu key)
 
 ; Modification of https://github.com/fenwar/ahk-caps-ctrl-esc/blob/master/AutoHotkey.ahk
@@ -90,12 +90,14 @@ g_MouseClickDetected := false
 
 	if (A_PRIORKEY == "CapsLock") and (!g_MouseClickDetected)
     {
-		if (time_elapsed <= 250) {
-			Send {Esc}
-		} else {
-			ToggleCaps()
-			; MsgBox ("CAPS UP AFTER 250ms")
-		}
+		Send {Esc}
+
+		; if (time_elapsed <= 250) {
+		; 	Send {Esc}
+		; } else {
+		; 	ToggleCaps()
+		; 	; MsgBox ("CAPS UP AFTER 250ms")
+		; }
 	}
     
 	time_elapsed := 0
@@ -106,8 +108,11 @@ g_MouseClickDetected := false
 
 
 ; When both shift keys are pressed, act like Capslock
-LShift & RShift::ToggleCaps()
-RShift & LShift::ToggleCaps()
+; LShift & RShift::ToggleCaps()
+; RShift & LShift::ToggleCaps()
+
+; Ctrl(or Caps) + Esc toggles capslock
+^Esc::ToggleCaps()
 
 #!c::
 ExitApp

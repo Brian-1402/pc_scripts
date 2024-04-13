@@ -90,14 +90,15 @@ g_MouseClickDetected := false
 
 	if (A_PRIORKEY == "CapsLock") and (!g_MouseClickDetected)
     {
-		Send {Esc}
+		; Send {Esc}
 
-		; if (time_elapsed <= 250) {
-		; 	Send {Esc}
+		if (time_elapsed <= 250) {
+			Send {Esc}
+		; ; Commented out the else statement so that if caps is pressed for too long, and released, it cancels the Esc. Does nothing.
 		; } else {
-		; 	ToggleCaps()
-		; 	; MsgBox ("CAPS UP AFTER 250ms")
-		; }
+			; ToggleCaps()
+			; MsgBox ("CAPS UP AFTER 250ms")
+		}
 	}
     
 	time_elapsed := 0

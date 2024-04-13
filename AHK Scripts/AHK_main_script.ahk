@@ -21,13 +21,15 @@ return
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
 return
 ^+#s::									;Ctrl+Shift+Win+S
-Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
+; Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
+Run, obsidian://open?vault=Cache&file=Cache
 return
 #j::									;Win+J
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Joplin.lnk
 return
 #o::									;Win+O
-Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Obsidian.lnk
+; Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Obsidian.lnk
+Run, obsidian://open?vault=09ca6e481f10d6c7
 return
 ;#n::									;Win+N
 ;Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Notion.lnk

@@ -1,4 +1,4 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <FreeFileSync XmlType="BATCH" XmlFormat="17">
     <Compare>
         <Variant>TimeAndSize</Variant>
@@ -29,9 +29,18 @@
             <Item>\RECYCLE?\</Item>
             <Item>\Recovery\</Item>
             <Item>*\thumbs.db</Item>
-            <Item>\_Sem4_resources\Yash Agarwal\</Item>
+            <Item>*\Yash Agarwal\</Item>
             <Item>\.stversions\</Item>
             <Item>\.stfolder\</Item>
+            <Item>*\venv</Item>
+            <Item>*\env</Item>
+            <Item>*\.git</Item>
+            <Item>*\data</Item>
+            <Item>\_Sem5_resources</Item>
+            <Item>*.swp</Item>
+            <Item>*\COL351</Item>
+            <Item>*\COL774</Item>
+            <Item>\_software</Item>
         </Exclude>
         <SizeMin Unit="None">0</SizeMin>
         <SizeMax Unit="None">0</SizeMax>
@@ -39,8 +48,33 @@
     </Filter>
     <FolderPairs>
         <Pair>
+            <Left>C:\Users\brian\Code</Left>
+            <Right>C:\Users\brian\My Files\OneDrive - IIT Delhi\IITD Backup Folder\Code</Right>
+            <Filter>
+                <Include>
+                    <Item>*</Item>
+                </Include>
+                <Exclude>
+                    <Item>*\data</Item>
+                    <Item>\.stversions</Item>
+                    <Item>\.stfolder</Item>
+                    <Item>*\venv</Item>
+                    <Item>*\env</Item>
+                    <Item>*\.git</Item>
+                    <Item>_envs</Item>
+                    <Item>_software</Item>
+                    <Item>_ignore</Item>
+                    <Item>*\output</Item>
+                    <Item>*\bin</Item>
+                </Exclude>
+                <SizeMin Unit="None">0</SizeMin>
+                <SizeMax Unit="None">0</SizeMax>
+                <TimeSpan Type="None">0</TimeSpan>
+            </Filter>
+        </Pair>
+        <Pair>
             <Left>C:\Users\brian\My Files\Study\Work</Left>
-            <Right>C:\Users\brian\My Files\OneDrive - IIT Delhi\IITD Backup Folder\_Sem4</Right>
+            <Right>C:\Users\brian\My Files\OneDrive - IIT Delhi\IITD Backup Folder\_Sem6</Right>
         </Pair>
     </FolderPairs>
     <Errors Ignore="false" Retry="0" Delay="5"/>

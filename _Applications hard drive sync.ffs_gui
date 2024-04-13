@@ -9,7 +9,7 @@
         <Variant>Custom</Variant>
         <CustomDirections>
             <LeftOnly>right</LeftOnly>
-            <RightOnly>right</RightOnly>
+            <RightOnly>none</RightOnly>
             <LeftNewer>right</LeftNewer>
             <RightNewer>none</RightNewer>
             <Different>none</Different>
@@ -31,6 +31,7 @@
             <Item>*\thumbs.db</Item>
             <Item/>
             <Item>*\Large files\</Item>
+            <Item>2022 and earlier\</Item>
         </Exclude>
         <SizeMin Unit="None">0</SizeMin>
         <SizeMax Unit="None">0</SizeMax>

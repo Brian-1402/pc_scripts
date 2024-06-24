@@ -31,7 +31,9 @@
             <Item>*\thumbs.db</Item>
             <Item/>
             <Item>*\Large files\</Item>
-            <Item>2022 and earlier\</Item>
+            <Item>\2022 and earlier\</Item>
+            <Item>\2023\</Item>
+            <Item>*\Software cracks\</Item>
         </Exclude>
         <SizeMin Unit="None">0</SizeMin>
         <SizeMax Unit="None">0</SizeMax>

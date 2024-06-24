@@ -21,14 +21,12 @@ return
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
 return
 ^+#s::									;Ctrl+Shift+Win+S
-; Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Simplenote.lnk
 Run, obsidian://open?vault=Cache&file=Cache
 return
 #j::									;Win+J
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Joplin.lnk
 return
 #o::									;Win+O
-; Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Obsidian.lnk
 Run, obsidian://open?vault=09ca6e481f10d6c7
 return
 ;#n::									;Win+N
@@ -58,9 +56,9 @@ return
 #t::									;Win+T
 Run, %vUserHome%\My Files\Study\Time Table.txt
 return
-#+t::									;Win+Shift+T
-Run, %vUserHome%\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
-return
+; #+t::									;Win+Shift+T
+; Run, %vUserHome%\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
+; return
 
 if (A_OSVersion != "WIN_10") {
 	#e::									;Win+E
@@ -77,12 +75,21 @@ if (A_OSVersion != "WIN_10") {
 Run, C:\Windows\System32\Taskmgr.exe
 return
 
+; Open chatgpt.com website
+#+c::
+Run, https://chatgpt.com/
+return
+
+
 
 :co:sbr/::www.reddit.com/r/
 return
 :co:sre::site:www.reddit.com
 return
 
+
+; I want the below to not be active during neovim sessions, they have different behaviour there
+#If !(WinActive("ahk_exe neovide.exe") || WinActive("ahk_exe WindowsTerminal.exe"))
 
 !w::									;Alt+W
 SendInput ^{F4}									;>Ctrl+F4
@@ -107,6 +114,10 @@ return
 +!q::									;Shift+Alt+Q
 SendInput +^{Tab}								;>Shift+Tab
 return
+
+#If  ; End of conditional hotkeys
+
+
 
 !c::									;Alt+C
 <^>!c::									;LCtrl+RAlt+C

@@ -89,7 +89,7 @@ return
 
 
 ; I want the below to not be active during neovim sessions, they have different behaviour there
-#If !(WinActive("ahk_exe neovide.exe") || WinActive("ahk_exe WindowsTerminal.exe"))
+#If !(WinActive("ahk_exe neovide.exe") || WinActive("ahk_exe WindowsTerminal.exe") || WinActive("ahk_exe nvim-qt.exe") || WinActive("ahk_exe Nvy.exe"))
 
 !w::									;Alt+W
 SendInput ^{F4}									;>Ctrl+F4

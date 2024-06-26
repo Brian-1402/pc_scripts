@@ -1,0 +1,92 @@
+I need you to create flashcards content.
+create anki decks import text files in the following format:
+lines has the content separated with semicolon. for example:
+
+```
+#whatever file headers are there
+fruit that starts with a;apple
+who is messi;footballer
+what is neovim?;"Neovim is a
+text editor. For this answer I can do multi line escaping 
+by enclosing with quotation marks"
+# This is a comment, starts with hashtag
+question 4; answer line 1<br>answer line 2<br>html newline tags can be used
+```
+
+If there are more fields than just question answer pairs, then there is more separations in a line, like suppose I want to add field1;field2;field_extra which is 3 sets.
+
+
+There can be headers that can be included in the text file to make importing more powerful or convenient. They consist of #key:value pairs and must be listed in separate lines at the top of the file, though the tags line may precede them
+
+Key	Allowed Values	Behaviour
+separator	Comma, Semicolon, Tab, Space, Pipe, Colon, or the according literal characters	Determines the field separator.
+html	true, false	Determines whether the file is treated as HTML.
+tags	List of tags, separated by spaces	Same as the old syntax.
+columns	List of names, separated by the previously set separator	Determines the number of columns and shows their given names when importing.
+notetype	Notetype name or id	Presets the notetype, if it exists.
+deck	Deck name or id	Presets the deck, if it exists.
+notetype column	1, 2, 3, ...	Determines which column contains the notetype name or id of each note, see Notetype Column.
+
+
+Notetype Column
+Usually, all notes from a file will be mapped to a single notetype, and you may choose which column should be mapped to which field of that notetype.
+
+That changes, if there is a column with notetype names or ids. This allows to import notes with different notetypes, and their fields will be mapped implicitly: The first regular column is used for the first field of any note regardless of its notetype, the second regular column for the second field, and so on. A 'regular column' here being a column that does not contain special information like decks, tags, notetypes or GUIDs.
+
+A preferable detailed complete example of a note is this:
+```
+#separator:tab
+#html:true
+#notetype column:1
+#tags column:4
+Basic (and reversed + extra)	unordered_map::emplace()	<div>Construct and insert element in unordered_map</div>	"Inserts a new element in the&nbsp;<a href=""https://cplusplus.com/unordered_map"">unordered_map</a>&nbsp;if its key is unique. This new element is constructed in place using&nbsp;<i>args</i>&nbsp;as the arguments for the element's constructor.<br><br>The insertion only takes place if no element in the container has a key equivalent to the one being emplaced (keys in an&nbsp;<a href=""https://cplusplus.com/unordered_map"">unordered_map</a>&nbsp;are unique).<br><br>If inserted, this effectively increases the container&nbsp;<a href=""https://cplusplus.com/unordered_map::size"">size</a>&nbsp;by one.<br><br>A similar member function exists,&nbsp;<a href=""https://cplusplus.com/unordered_map::insert"">insert</a>, which either copies or moves existing objects into the container.<br><h3>Return value</h3>If the insertion takes place (because no other element existed with the same key), the function returns a&nbsp;<a href=""https://cplusplus.com/pair"">pair</a>&nbsp;object, whose first component is an iterator to the inserted element, and whose second component is&nbsp;true.<br><br>Otherwise, the&nbsp;<a href=""https://cplusplus.com/pair"">pair</a>&nbsp;object returned has as first component an iterator pointing to the element in the container with the same key, and&nbsp;false&nbsp;as its second component.<br><h3>Example</h3><pre><code>int main ()
+{
+  std::unordered_map&lt;std::string,std::string&gt; mymap;
+
+  mymap.emplace (""NCC-1701"", ""J.T. Kirk"");
+  mymap.emplace (""NCC-1701-D"", ""J.L. Picard"");
+  mymap.emplace (""NCC-74656"", ""K. Janeway"");
+
+  return 0;</code></pre>"	
+```
+
+now for the following content, just produce a whole text file with multiple entries. 
+I need the flashcards in two notetypes:
+
+1)  Basic:
+this has two fields: 1)front, 2)back
+front will have a question, and back will have a detailed answer.
+
+2) Basic (and reversed card):
+this will have two fields, 1)front, 2)back.
+front typically will have a short statement about the question name, back will have a slightly more descriptive answer. this notetype is for the questions which can have front and back content which can be answered individually from each other. just by looking at back i must be able to answer what front is. 
+
+3) Basic (and reversed + extra):
+It should have 3 fields, which is, 1) front, 2) back, 3) extra
+so this note will generate two flashcards, each showing just front, or just back, and after opening, it will show all 3. extra field is for storing extra important in depth contextual information about the content in front or back.
+front typically will have a short statement about the question name, back will have a slightly more descriptive answer. this notetype is for the questions which can have front and back content which can be answered individually from each other. just by looking at back i must be able to answer what front is.
+Extra should have lot of information, even upto 100 words, because it is not for memorizing, it is for reference knowledge. front and back should be relatively shorter because it is for memorizing. Extra
+
+An example below which includes all 3 notetypes:
+
+```
+#separator:tab
+#html:true
+#notetype column:1
+Basic (and reversed card)	Toggle fold recursively	zA	
+Basic	For C++ data structures, what is the usual equivalent method for removing contents, given the iterator/index/identifying item?	erase()	
+```	
+
+```
+#separator:tab
+#html:true
+#notetype column:1
+Basic (and reversed + extra)	vector::cend()	Return const_iterator to end of vector	"Returns a&nbsp;const_iterator&nbsp;pointing to the&nbsp;<i>past-the-end</i>&nbsp;element in the vector container.<br><br>A&nbsp;const_iterator&nbsp;is an iterator that points to const content. This iterator can be increased and decreased (unless it is itself also const), just like the&nbsp;iterator&nbsp;returned by&nbsp;<a href=""https://cplusplus.com/vector::end"">vector::end</a>, but it cannot be used to modify the contents it points to, even if the&nbsp;<a href=""https://cplusplus.com/vector"">vector</a>&nbsp;object is not itself const.<br><br>If the container is&nbsp;<a href=""https://cplusplus.com/vector::empty"">empty</a>, this function returns the same as&nbsp;<a href=""https://cplusplus.com/vector::cbegin"">vector::cbegin</a>.<br><br>The value returned shall not be dereferenced."
+```
+
+
+the "Basic (and reversed + extra)" notetype cards should be in a separate text file, since it has 4 columns, and the other two notetypes have 3 columns.
+
+So for a typical case you should generate your answer as two separate text files, with the basic, basic and reversed cards content in one file and the basic (and reversed + extra) content in another file. I prefer more information, and having more cards in basic (nd reversed + extra) but for short questions for which too much information is unnecessary, just use the basic or basic and reversed types.
+
+just reply acknowledged if you fully understand the instructions.

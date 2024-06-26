@@ -5,7 +5,7 @@ import argparse
 from collections import defaultdict
 
 # Global variable to specify the number of files to extract per folder
-FILES_PER_DIR = 3
+FILES_PER_DIR = 4
 IMAGE_EXTENSIONS = ("jpg", "jpeg", "png", "gif", "bmp")
 
 

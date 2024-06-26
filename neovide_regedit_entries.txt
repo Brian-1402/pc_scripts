@@ -1,0 +1,3 @@
+The usual - "C:\Users\brian\scoop\apps\neovide\current\neovide.exe" "%1"
+For calling the ps1 script - powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\brian\pc_scripts\launch-neovide.ps1" "%1"
+

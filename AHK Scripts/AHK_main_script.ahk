@@ -8,7 +8,24 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 EnvGet, vUserHome, USERPROFILE
 
 
-if (A_ComputerName == "BRIAN-HP") {
+
+:co:@sbr::www.reddit.com/r/
+return
+:co:@sre::site:www.reddit.com
+return
+:co:@bsk::Brian Sajeev Kattikat
+return
+:co:@bsm::briansajeev@gmail.com
+return
+:co:@kerm::cs5210509@iitd.ac.in
+return
+:co:@kerb::cs5210509
+return
+:co:@kerp::126a87ea
+return
+
+
+#If (A_ComputerName == "BRIAN-HP")
 
 ^+#z::									;Ctrl+Shift+Win+Z
 Run, %vUserHome%\AppData\Roaming\Portable Chrome
@@ -60,13 +77,11 @@ return
 ; Run, %vUserHome%\My Files\Study\General_Time_Table_FY_II_Sem_2021-22.pdf
 ; return
 
-if (A_OSVersion != "WIN_10") {
-	#e::									;Win+E
-		Run, %vUserHome%\Shortcuts
-	return
-}
+#e::									;Win+E
+	Run, %vUserHome%\Shortcuts
+return
 
-}
+#If
 
 ;	The below hotkeys will work on any PC, i.e. they're all general hotkeys
 
@@ -78,13 +93,6 @@ return
 ; Open chatgpt.com website
 #+c::
 Run, https://chatgpt.com/
-return
-
-
-
-:co:sbr/::www.reddit.com/r/
-return
-:co:sre::site:www.reddit.com
 return
 
 
@@ -130,7 +138,7 @@ WinMinimize, A
 return
 
 #x::									;Win+X
-~RAlt & .::								;RAlt+.
+; ~RAlt & .::								;RAlt+.
 ;~, & .::								;,+.
 ~/ & ,::								;/+,
 ;~NumpadDot & Numpad1::							
@@ -141,7 +149,7 @@ SendInput #^{left}								;>Win+Ctrl+Left
 return
 
 #c::									;Win+C
-~RAlt & /::								;Ralt+/
+; ~RAlt & /::								;Ralt+/
 ;~, & /::								;,+/
 ~/ & .::								;/+.
 ;~NumpadDot & Numpad2::
@@ -151,6 +159,13 @@ return
 SendInput #^{right}								;>Win+Ctrl+Right
 return
 
+~RAlt & .::								;RAlt+.
+SendInput !+{Esc}								;>Alt+Shift+Esc
+return
+
+~RAlt & /::								;Ralt+/
+SendInput !{Esc}								;>Alt+Esc
+return
 
 ; LWin & Space::							;Win+Space
 ; SendInput {Media_Play_Pause}

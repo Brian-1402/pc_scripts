@@ -9,6 +9,10 @@ EnvGet, vUserHome, USERPROFILE
 
 
 
+:co:sbr::www.reddit.com/r/
+return
+:co:sre::site:www.reddit.com
+return
 :co:@sbr::www.reddit.com/r/
 return
 :co:@sre::site:www.reddit.com
@@ -29,13 +33,16 @@ return
 
 ^+#z::									;Ctrl+Shift+Win+Z
 Run, %vUserHome%\AppData\Roaming\Portable Chrome
+; Run, Notepad.exe "%vUserHome%\AppData\Roaming\Portable Chrome\Aaron\nofap.txt"
 return
 ^+!z::									;Ctrl+Shift+Alt+Z
 ^+/::									;Ctrl+Shift+/
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Olevin.lnk
+; Run, obsidian://open?vault=Cache&file=Temp`%20search
 return
 ^+#x::									;Ctrl+Shift+Win+X
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Chrome - Aaron.lnk
+; Run, Notepad.exe "%vUserHome%\AppData\Roaming\Portable Chrome\Aaron\nofap.txt"
 return
 ^+#s::									;Ctrl+Shift+Win+S
 Run, obsidian://open?vault=Cache&file=Cache
@@ -44,13 +51,14 @@ return
 Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Joplin.lnk
 return
 #o::									;Win+O
-Run, obsidian://open?vault=09ca6e481f10d6c7
+Run, obsidian://open?vault=5d00a863115903d5
 return
 ;#n::									;Win+N
 ;Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Notion.lnk
 ;return
 ^+#w::									;Ctrl+Shift+Win+W
-Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Working Memory.url
+; Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Working Memory.url
+Run, %vUserHome%\AppData\Roaming\Portable Chrome\shortcuts\Notion.lnk
 return
 
 ;#!l::									;Win+Alt+L
@@ -66,6 +74,7 @@ Run, %vUserHome%\Automations\WhatsApp.lnk
 return
 #!n::									;Win+Alt+N
 Run, %vUserHome%\Automations\Incognito (Brian) - Chrome.lnk
+; Run, obsidian://open?vault=Cache&file=Temp`%20search
 return
 #!t::									;Win+Alt+T
 Run, %vUserHome%\My Files\Study\To do.txt
@@ -90,10 +99,10 @@ return
 Run, C:\Windows\System32\Taskmgr.exe
 return
 
-; Open chatgpt.com website
-#+c::
-Run, https://chatgpt.com/
-return
+; ; Open chatgpt.com website
+; #+c::
+; Run, https://chatgpt.com/
+; return
 
 
 ; I want the below to not be active during neovim sessions, they have different behaviour there
